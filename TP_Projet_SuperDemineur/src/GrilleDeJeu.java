@@ -26,7 +26,7 @@ public class GrilleDeJeu {
     }
     
     public void placerBombesAleatoirement(){
-        int nbMaxBombes;             
+        int nbMaxBombes=0;           
         for (int a = 0; a < nbMaxBombes; a++) {
     int i = (int)(Math.random() * nbLines);
     int j = (int)(Math.random() * nbColonnes);
@@ -42,4 +42,4 @@ public class GrilleDeJeu {
         }
     }
     
-}
+
