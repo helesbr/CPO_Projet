@@ -58,13 +58,15 @@ public class GrilleDeJeu {
                             }
                         
                     }
-                }
+                } 
+                matriceCellules[i][j].setNbBombesAdjacentes(compteur);
                     }
                 }
             }
         }
 }
-                    
+ 
+
                 
             
         
