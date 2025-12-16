@@ -32,14 +32,45 @@ public class GrilleDeJeu {
     int j = (int)(Math.random() * nbColonnes);
 
     if (!matriceCellules[i][j].isPresenceBombe()) {
-        matriceCellules[i][j].placerBombe(); // place la bombe si la cellule est vide
+        matriceCellules[i][j].placerBombe(); 
     } else {
-        a--; // recommence cette itération si la cellule avait déjà une bombe
+        a--; 
     }
 }
+    }
+        public void calculerBombesAdjacentes(){
+            for (int i=0; i<nbLines;i++){
+                for (int j=0; j<nbColonnes; j++){
+                    if (!matriceCellules[i][j].isPresenceBombe()) {
+                        int compteur = 0;
+                for (int di = -1; di <= 1; di++) {
+                        for (int dj=-1; dj<=1; dj++){
+                            if(di==0&&dj==0){
+                                continue;
+                            }
+                            int ni = i +di;
+                            int nj = j + dj;
+                            
+                            if (ni>=0 && ni < nbLines && nj>=0&& nj<nbColonnes){
+                                if (matriceCellules[nj][ni].isPresenceBombe()){
+                                    compteur++;
+                                }
+                            }
+                        
+                    }
+                }
+                    }
+                }
+            }
+        }
+}
+                    
+                
+            
+        
 
         
-        }
-    }
+        
+    
     
 
