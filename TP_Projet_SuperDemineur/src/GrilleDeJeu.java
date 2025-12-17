@@ -13,6 +13,15 @@ public class GrilleDeJeu {
     private int nbColonnes;
     private int nbBombes;
 
+    public void InitaliserGrille(){
+    matriceCellules = new Cellule[10][10];
+            for(int i=0; i<10; i++){
+                for (int j=0; j<10; j++){
+                    matriceCellules[i][j] = new Cellule();
+                }
+            }
+    }
+    
     public int getNbLines() {
         return nbLines;
     }
@@ -64,11 +73,15 @@ public class GrilleDeJeu {
                 }
             }
         }
-}
+
  
 
+public boolean getPresence(int i, int j){
+            return matriceCellules[i][j].isPresenceBombe();
+}
+}
                 
-            
+           
         
 
         
