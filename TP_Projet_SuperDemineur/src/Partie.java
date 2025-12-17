@@ -13,13 +13,11 @@ public class Partie {
     private boolean partieTerminee;
     private int nbVies;
     
-public void tourDeJeu(int ligne, int colonne) {
-
+public void tourDeJeu(int nbLines, int nbColonne) {
     if (partieTerminee) {
         return;
     }
-
-    grille.revelerCellule(ligne, colonne);
+    grille.revelerCellule(nbLines, nbColonne);
 }
     
     public void initaliserPartie(){
