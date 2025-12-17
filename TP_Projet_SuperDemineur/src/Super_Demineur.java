@@ -22,12 +22,15 @@ public class Super_Demineur extends javax.swing.JFrame {
         int nbColonnes = 10;
         int NbBombes = 10;
         Jeu.initaliserPartie(nbLignes, nbColonnes, NbBombes);
+        Jeu.demarrerPartie();
                 PanneauGrille.setLayout(new java.awt.GridLayout(nbLignes, nbColonnes));
            for (int i=0; i < nbLignes; i++) {
             for (int j=0; j < nbColonnes; j++ ) {
-        JButton bouton_cellule = new JButton(); // création d'un bouton
-     PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+        JButton bouton_cellule = new JButton(); 
+     PanneauGrille.add(bouton_cellule); 
+     
  }
+           
 }
  
     }

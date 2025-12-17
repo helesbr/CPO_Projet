@@ -14,7 +14,7 @@ public class Partie {
     private int nbVies;
     private int nbLines;
     private int nbColonnes;
-    private int nbBombes;
+    private int NbBombes;
 
     
 public void tourDeJeu(int nbLines, int nbColonne) {
@@ -24,16 +24,18 @@ public void tourDeJeu(int nbLines, int nbColonne) {
     grille.revelerCellule(nbLines, nbColonne);
 }
     
-    public void initaliserPartie(){
-        grille = new GrilleDeJeu(grille.getNbLines(), grille.getNbColonnes(), grille.getNbBombes());
+    public void initaliserPartie(int nbLines, int nbColonnes, int NbBombes){
+        this.nbLines = nbLines;
+        this.nbColonnes = nbColonnes;
+        this.NbBombes = NbBombes;
+        grille = new GrilleDeJeu(this.nbLines, this.nbColonnes, this.NbBombes);
+        grille.InitaliserGrille();
         grille.placerBombesAleatoirement();
         nbVies = 1;               
         partieTerminee = false;
     }
     public void demarrerPartie() {
     partieTerminee = false;
-    grille = new GrilleDeJeu(nbLines, nbColonnes, nbBombes);
-    grille.placerBombesAleatoirement();
     grille.calculerBombesAdjacentes();
     System.out.println("La partie commence !");
 }
