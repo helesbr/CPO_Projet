@@ -12,6 +12,10 @@ public class Partie {
     private GrilleDeJeu grille;
     private boolean partieTerminee;
     private int nbVies;
+    private int nbLines;
+    private int nbColonnes;
+    private int nbBombes;
+
     
 public void tourDeJeu(int nbLines, int nbColonne) {
     if (partieTerminee) {
@@ -26,4 +30,15 @@ public void tourDeJeu(int nbLines, int nbColonne) {
         nbVies = 1;               
         partieTerminee = false;
     }
+    public void demarrerPartie() {
+
+    partieTerminee = false;
+
+    grille = new GrilleDeJeu(nbLines, nbColonnes, nbBombes);
+
+    grille.placerBombesAleatoirement();
+    grille.calculerBombesAdjacentes();
+
+    System.out.println("La partie commence !");
+}
 }
