@@ -26,4 +26,10 @@ public void tourDeJeu(int nbLines, int nbColonne) {
         nbVies = 1;               
         partieTerminee = false;
     }
+    
+ public void verifierVictoire(){
+     if (grille.toutesCellulesRevelees()==true){
+         partieTerminee = true;
+     }
+ }   
 }
