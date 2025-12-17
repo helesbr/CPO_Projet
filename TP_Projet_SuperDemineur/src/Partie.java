@@ -7,6 +7,18 @@
  *
  * @author helia
  */
+
 public class Partie {
+    private GrilleDeJeu grille;
+    private boolean partieTerminee;
+    
+public void tourDeJeu(int ligne, int colonne) {
+
+    if (partieTerminee) {
+        return;
+    }
+
+    grille.revelerCellule(ligne, colonne);
+}
     
 }
