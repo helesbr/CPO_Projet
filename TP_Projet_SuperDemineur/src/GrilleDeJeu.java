@@ -13,10 +13,16 @@ public class GrilleDeJeu {
     private int nbColonnes;
     private int nbBombes;
 
+    public GrilleDeJeu(int nbLines, int nbColonnes, int nbBombes) {
+        this.nbLines = nbLines;
+        this.nbColonnes = nbColonnes;
+        this.nbBombes = nbBombes;
+    }
+    
     public void InitaliserGrille(){
-    matriceCellules = new Cellule[10][10];
-            for(int i=0; i<10; i++){
-                for (int j=0; j<10; j++){
+    matriceCellules = new Cellule[nbLines][nbColonnes];
+            for(int i=0; i<nbLines; i++){
+                for (int j=0; j<nbColonnes; j++){
                     matriceCellules[i][j] = new Cellule();
                 }
             }
@@ -109,14 +115,31 @@ public boolean toutesCellulesRevelees(){
         }
     }return true;
 }
+        @Override
+public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("   ");
+    for (int j = 0; j < nbColonnes; j++) {
+        sb.append(j).append(" ");
+    }
+    sb.append("\n");
+    sb.append("  +");
+    for (int j = 0; j < nbColonnes * 2; j++) {
+        sb.append("-");
+    }
+    sb.append("+\n");
+    for (int i = 0; i < nbLines; i++) {
+        sb.append(i).append(" |");
+        for (int j = 0; j < nbColonnes; j++) {
+            sb.append(matriceCellules[i][j].toString()).append(" ");
+        }
+        sb.append("|\n");
+    }
+    sb.append("  +");
+    for (int j = 0; j < nbColonnes * 2; j++) {
+        sb.append("-");
+    }
+    sb.append("+\n");
+    return sb.toString();
 }
-
-                
-           
-        
-
-        
-        
-    
-    
-
+}
