@@ -7,10 +7,20 @@
  *
  * @author helia
  */
+
 public class Partie {
     private GrilleDeJeu grille;
-    private int nbVies;
     private boolean partieTerminee;
+    private int nbVies;
+    
+public void tourDeJeu(int ligne, int colonne) {
+
+    if (partieTerminee) {
+        return;
+    }
+
+    grille.revelerCellule(ligne, colonne);
+}
     
     public void initaliserPartie(){
         grille = new GrilleDeJeu(grille.getNbLines(), grille.getNbColonnes(), grille.getNbBombes());
