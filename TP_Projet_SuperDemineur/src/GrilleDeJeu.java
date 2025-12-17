@@ -116,7 +116,7 @@ public boolean getPresence(int i, int j){
 public boolean toutesCellulesRevelees(){
     for(int i=0 ;i<nbLines; i++){
         for (int j=0; j<nbColonnes; j++){
-            if(!matriceCellules[i][j].isPresenceBombe()) && !matriceCellules[i][j].isrevellerCellule()){
+            if(!matriceCellules[i][j].isPresenceBombe() && !matriceCellules[i][j].estDevoilee()){
             return false;
             }
         }
