@@ -71,11 +71,44 @@ public class GrilleDeJeu {
                 matriceCellules[i][j].setNbBombesAdjacentes(compteur);
                     }
                 }
+                
+            }}
+        
+public void revelerCellule(int nbLines, int nbColonnes) {
+
+    // 1. Vérifier que l’on est dans la grille
+    if (nbLines < 0 || nbLines >= this.nbLines ||
+        nbColonnes < 0 || nbColonnes >= this.nbColonnes) {
+        return;
+    }
+
+    Cellule c = matriceCellules[nbLines][nbColonnes];
+
+    // 2. Si déjà dévoilée, on ne fait rien
+    if (c.estDevoilee()) {
+        return;
+    }
+
+    // 3. Si c’est une bombe → fin de partie
+    if (c.isPresenceBombe()) {
+        System.out.println("BOOM ! Partie terminée.");
+        return;
+    }
+
+    // 4. Révéler la cellule
+    c.revelerCellule();
+
+    // 5. Propagation si 0 bombe adjacente
+    if (c.getNbBombesAdjacentes() == 0) {
+        for (int i = nbLines - 1; i <= nbLines + 1; i++) {
+            for (int j = nbColonnes - 1; j <= nbColonnes + 1; j++) {
+                revelerCellule(i, j);
             }
         }
 
  
-
+    }
+}
 public boolean getPresence(int i, int j){
             return matriceCellules[i][j].isPresenceBombe();
 }
