@@ -9,7 +9,7 @@
  */import javax.swing.JButton;
 
 public class Super_Demineur extends javax.swing.JFrame {
-    
+    private Partie Jeu;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Super_Demineur.class.getName());
 
     /**
@@ -17,24 +17,23 @@ public class Super_Demineur extends javax.swing.JFrame {
      */
     public Super_Demineur() {
         initComponents();
-        Partie Jeu = new Partie();
+        Jeu = new Partie();
         int nbLignes = 10;
         int nbColonnes = 10;
         int NbBombes = 10;
         Jeu.initaliserPartie(nbLignes, nbColonnes, NbBombes);
         Jeu.demarrerPartie();
                 PanneauGrille.setLayout(new java.awt.GridLayout(nbLignes, nbColonnes));
-           for (int i=0; i < nbLignes; i++) {
+                for (int i=0; i < nbLignes; i++) {
             for (int j=0; j < nbColonnes; j++ ) {
-        JButton bouton_cellule = new JButton(); 
-     PanneauGrille.add(bouton_cellule); 
-     
- }
-           
-}
- 
+        CelluleGraphique bouton_cellule = new CelluleGraphique(Jeu.getGrille().getCellule(i,j), 36,36); 
+            PanneauGrille.add(bouton_cellule);
+        }
     }
 
+ }     
+        
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,16 +55,16 @@ public class Super_Demineur extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PanneauGrille, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(292, Short.MAX_VALUE))
+                .addGap(68, 68, 68)
+                .addComponent(PanneauGrille, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(PanneauGrille, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(PanneauGrille, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         pack();
