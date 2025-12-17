@@ -33,6 +33,9 @@ public void setNbBombesAdjacentes(int nbBombesAdjacentes) {
     public void revelerCellule(){
         devoilee=true;
     }
+    public boolean estDevoilee() {
+    return devoilee;
+}
 
 @Override
 public String toString() {
