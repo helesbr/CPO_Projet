@@ -6,7 +6,8 @@
 /**
  *
  * @author helia
- */
+ */import javax.swing.JButton;
+
 public class Super_Demineur extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Super_Demineur.class.getName());
@@ -17,8 +18,18 @@ public class Super_Demineur extends javax.swing.JFrame {
     public Super_Demineur() {
         initComponents();
         Partie Jeu = new Partie();
-        Jeu.initaliserPartie();
-            
+        int nbLignes = 10;
+        int nbColonnes = 10;
+        int NbBombes = 10;
+        Jeu.initaliserPartie(nbLignes, nbColonnes, NbBombes);
+                PanneauGrille.setLayout(new java.awt.GridLayout(nbLignes, nbColonnes));
+           for (int i=0; i < nbLignes; i++) {
+            for (int j=0; j < nbColonnes; j++ ) {
+        JButton bouton_cellule = new JButton(); // création d'un bouton
+     PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+ }
+}
+ 
     }
 
     /**
@@ -30,17 +41,28 @@ public class Super_Demineur extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PanneauGrille = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        PanneauGrille.setBackground(new java.awt.Color(255, 51, 51));
+        PanneauGrille.setLayout(new java.awt.GridLayout(10, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PanneauGrille, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(292, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(PanneauGrille, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(223, Short.MAX_VALUE))
         );
 
         pack();
@@ -72,5 +94,6 @@ public class Super_Demineur extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PanneauGrille;
     // End of variables declaration//GEN-END:variables
 }
