@@ -16,6 +16,9 @@ public class Super_Demineur extends javax.swing.JFrame {
      */
     public Super_Demineur() {
         initComponents();
+        Partie Jeu = new Partie();
+        Jeu.initaliserPartie();
+            
     }
 
     /**
