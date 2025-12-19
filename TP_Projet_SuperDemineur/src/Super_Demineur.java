@@ -61,6 +61,8 @@ public class Super_Demineur extends javax.swing.JFrame {
                     for (java.awt.Component c : PanneauGrille.getComponents()) {
                         c.setEnabled(false);
                     }
+                    PanneauGrille.repaint();
+                    PanneauGrille.revalidate();
                     int nbCasesRevelees = Jeu.getNbCellulesRevelees();
                     int nbTotalCases = Jeu.getGrille().getNbLines() * Jeu.getGrille().getNbColonnes();
                     Frame_Defaite defaite = new Frame_Defaite(nbCasesRevelees, nbTotalCases);
@@ -72,8 +74,8 @@ public class Super_Demineur extends javax.swing.JFrame {
                 PanneauGrille.add(bouton_cellule);
             }
         }
-        PanneauGrille.revalidate();
-        PanneauGrille.repaint();
+        
+        
     }
 
     /**
