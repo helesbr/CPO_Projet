@@ -36,6 +36,11 @@ public class Frame_Defaite extends javax.swing.JFrame {
         TextePerdu.setText("<HTML> BOOOOOOOOOM !!! Vous avez perdu !! <HMTL>");
 
         Btn_Recommencer.setText("Recommencer");
+        Btn_Recommencer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_RecommencerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,6 +65,10 @@ public class Frame_Defaite extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Btn_RecommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_RecommencerActionPerformed
+        
+    }//GEN-LAST:event_Btn_RecommencerActionPerformed
 
     /**
      * @param args the command line arguments

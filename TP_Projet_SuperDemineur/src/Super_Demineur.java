@@ -5,6 +5,7 @@
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 /**
  *
  * @author helia
@@ -14,23 +15,26 @@ import javax.swing.JButton;
 public class Super_Demineur extends javax.swing.JFrame {
 
     private Partie Jeu;
+    private int colonnes;
+    private int lignes;
+    private int bombes;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Super_Demineur.class.getName());
 
     /**
      * Creates new form Super_Demineur
      */
-    public Super_Demineur() {
-        initComponents();
+    public Super_Demineur(int colonnes, int lignes, int bombes) {
+         this.colonnes = colonnes;
+        this.lignes = lignes;
+        this.bombes = bombes;
         Jeu = new Partie();
-        int nbLignes = 10;
-        int nbColonnes = 10;
-        int NbBombes = 10;
-        Jeu.initaliserPartie(nbLignes, nbColonnes, NbBombes);
+        initComponents();       
+        Jeu.initaliserPartie(this.lignes, this.colonnes, this.bombes);
         Jeu.demarrerPartie();
         PanneauGrille.removeAll();
-        PanneauGrille.setLayout(new java.awt.GridLayout(nbLignes, nbColonnes));
-        for (int i = 0; i < nbLignes; i++) {
-            for (int j = 0; j < nbColonnes; j++) {
+        PanneauGrille.setLayout(new java.awt.GridLayout(this.lignes, this.colonnes));
+        for (int i = 0; i < this.lignes; i++) {
+            for (int j = 0; j < this.colonnes; j++) {
                 final int x = i;
                 final int y = j;
                 CelluleGraphique bouton_cellule = new CelluleGraphique(Jeu.getGrille().getCellule(i, j), 36, 36);
@@ -41,18 +45,22 @@ public class Super_Demineur extends javax.swing.JFrame {
                         if (Jeu.isPartieTerminee()) {
                         return;
                     }
-                        
+                        ((CelluleGraphique) e.getSource()).setEnabled(false);
                         Jeu.tourDeJeu(x,y);
                         repaint();
-                        
-                                
+                        if (Jeu.isPartieTerminee()) {
+                    for (java.awt.Component c : PanneauGrille.getComponents()) {
+                        c.setEnabled(false);
+                    }
+                        }            
                     }
                 };
                 bouton_cellule.addActionListener(ecouteurClick);
                 PanneauGrille.add(bouton_cellule);
             }
         }
-
+        PanneauGrille.revalidate();
+        PanneauGrille.repaint();
     }
 
     /**
@@ -67,54 +75,15 @@ public class Super_Demineur extends javax.swing.JFrame {
         PanneauGrille = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanneauGrille.setBackground(new java.awt.Color(255, 51, 51));
         PanneauGrille.setLayout(new java.awt.GridLayout(10, 10));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(PanneauGrille, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(89, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(PanneauGrille, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
-        );
+        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 65, 400, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Super_Demineur().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanneauGrille;
