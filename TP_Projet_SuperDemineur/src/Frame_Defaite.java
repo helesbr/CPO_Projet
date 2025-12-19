@@ -10,13 +10,14 @@
 public class Frame_Defaite extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Frame_Defaite.class.getName());
-
-    /**
-     * Creates new form Frame_Defaite
-     */
-    public Frame_Defaite() {
+    private int nbCasesRevelees;
+    int nbTotalCases;
+    public Frame_Defaite(int nbCasesRevelees, int nbTotalCases) {
+        this.nbCasesRevelees = nbCasesRevelees;
+        this.nbTotalCases = nbTotalCases;
         initComponents();
-    }
+        texte_stats.setText("Vous avez révélé " + nbCasesRevelees + " case(s) sur " + nbTotalCases + " !");
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,6 +30,7 @@ public class Frame_Defaite extends javax.swing.JFrame {
 
         TextePerdu = new javax.swing.JLabel();
         Btn_Recommencer = new javax.swing.JButton();
+        texte_stats = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,6 +44,8 @@ public class Frame_Defaite extends javax.swing.JFrame {
             }
         });
 
+        texte_stats.setText("Vous avez révelé ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -49,9 +53,10 @@ public class Frame_Defaite extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(135, 135, 135)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(texte_stats, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Btn_Recommencer)
                     .addComponent(TextePerdu, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -59,44 +64,24 @@ public class Frame_Defaite extends javax.swing.JFrame {
                 .addContainerGap(98, Short.MAX_VALUE)
                 .addComponent(TextePerdu, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(texte_stats)
+                .addGap(36, 36, 36)
                 .addComponent(Btn_Recommencer)
-                .addGap(100, 100, 100))
+                .addGap(48, 48, 48))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_RecommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_RecommencerActionPerformed
-        
+        Frame_Accueil accueil = new Frame_Accueil();
+        accueil.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_Btn_RecommencerActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Frame_Defaite().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Recommencer;
     private javax.swing.JLabel TextePerdu;
+    private javax.swing.JLabel texte_stats;
     // End of variables declaration//GEN-END:variables
 }

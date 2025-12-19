@@ -20,10 +20,19 @@ public class Super_Demineur extends javax.swing.JFrame {
     private int bombes;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Super_Demineur.class.getName());
 
+    public int getColonnes() {
+        return colonnes;
+    }
+
+    public int getLignes() {
+        return lignes;
+    }
+
     /**
      * Creates new form Super_Demineur
      */
     public Super_Demineur(int colonnes, int lignes, int bombes) {
+        int nbTotalCases = colonnes* lignes;
          this.colonnes = colonnes;
         this.lignes = lignes;
         this.bombes = bombes;
@@ -52,6 +61,10 @@ public class Super_Demineur extends javax.swing.JFrame {
                     for (java.awt.Component c : PanneauGrille.getComponents()) {
                         c.setEnabled(false);
                     }
+                    int nbCasesRevelees = Jeu.getNbCellulesRevelees();
+                    int nbTotalCases = Jeu.getGrille().getNbLines() * Jeu.getGrille().getNbColonnes();
+                    Frame_Defaite defaite = new Frame_Defaite(nbCasesRevelees, nbTotalCases);
+                    defaite.setVisible(true);
                         }            
                     }
                 };

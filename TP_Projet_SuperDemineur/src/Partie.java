@@ -16,6 +16,7 @@ public class Partie {
     private int nbLines;
     private int nbColonnes;
     private int NbBombes;
+    private int nbCellulesRevelees =0;
 
     public GrilleDeJeu getGrille() {
     return grille;
@@ -24,9 +25,11 @@ public class Partie {
 public void tourDeJeu(int nbLines, int nbColonne) {
     if (partieTerminee) {
         return;
-    }
-    boolean bombe = grille.revelerCellule(nbLines, nbColonne);
-    verifierFinDePartie(bombe);
+    }  
+    int nouvellesCasesRevelees = grille.revelerCellule(nbLines, nbColonne);
+    nbCellulesRevelees += nouvellesCasesRevelees;
+    boolean bombeCliquee = grille.getCellule(nbLines, nbColonne).isPresenceBombe();
+    verifierFinDePartie(bombeCliquee);
 }
     
     public void initaliserPartie(int nbLines, int nbColonnes, int NbBombes){
@@ -60,4 +63,10 @@ public void tourDeJeu(int nbLines, int nbColonne) {
  public boolean isPartieTerminee() {
     return partieTerminee;
 }
+
+    public int getNbCellulesRevelees() {
+        return nbCellulesRevelees;
+    }
+ 
+ 
 }

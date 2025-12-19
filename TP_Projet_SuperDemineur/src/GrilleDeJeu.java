@@ -83,28 +83,30 @@ public class GrilleDeJeu {
                 
             }}
         
-public boolean revelerCellule(int nbLines, int nbColonnes) {
+public int revelerCellule(int nbLines, int nbColonnes) {
     if (nbLines < 0 || nbLines >= this.nbLines ||
         nbColonnes < 0 || nbColonnes >= this.nbColonnes) {
-        return false;
+        return 0;
     }
     Cellule c = matriceCellules[nbLines][nbColonnes];
     if (c.estDevoilee()) {
-        return false;
+        return 0;
     }
     if (c.isPresenceBombe()) {
         System.out.println("BOOM ! Partie terminée.");
-        return true;
+        return 0;
     }
     c.revelerCellule();
+    int compteur = 1;
     if (c.getNbBombesAdjacentes() == 0) {
         for (int i = nbLines - 1; i <= nbLines + 1; i++) {
             for (int j = nbColonnes - 1; j <= nbColonnes + 1; j++) {
-                revelerCellule(i, j);
+                if (i == nbLines && j == nbColonnes) continue; // éviter la cellule centrale
+                compteur += revelerCellule(i, j);
+            }
             }
         }
-    }
-    return false;
+    return compteur;
 }
 public boolean getPresence(int i, int j){
             return matriceCellules[i][j].isPresenceBombe();
