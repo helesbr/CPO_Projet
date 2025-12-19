@@ -3,12 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /**
  *
  * @author helia
- */import javax.swing.JButton;
+ */
+import javax.swing.JButton;
 
 public class Super_Demineur extends javax.swing.JFrame {
+
     private Partie Jeu;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Super_Demineur.class.getName());
 
@@ -23,17 +27,27 @@ public class Super_Demineur extends javax.swing.JFrame {
         int NbBombes = 10;
         Jeu.initaliserPartie(nbLignes, nbColonnes, NbBombes);
         Jeu.demarrerPartie();
-                PanneauGrille.setLayout(new java.awt.GridLayout(nbLignes, nbColonnes));
-                for (int i=0; i < nbLignes; i++) {
-            for (int j=0; j < nbColonnes; j++ ) {
-        CelluleGraphique bouton_cellule = new CelluleGraphique(Jeu.getGrille().getCellule(i,j), 36,36); 
-            PanneauGrille.add(bouton_cellule);
+        PanneauGrille.setLayout(new java.awt.GridLayout(nbLignes, nbColonnes));
+        for (int i = 0; i < nbLignes; i++) {
+            for (int j = 0; j < nbColonnes; j++) {
+                final int x = i;
+                final int y = j;
+                CelluleGraphique bouton_cellule = new CelluleGraphique(Jeu.getGrille().getCellule(i, j), 36, 36);
+                ActionListener ecouteurClick = new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        Jeu.tourDeJeu(x,y);
+                        repaint();
+                    }
+                };
+                bouton_cellule.addActionListener(ecouteurClick);
+                PanneauGrille.add(bouton_cellule);
+            }
         }
+
     }
 
- }     
-        
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

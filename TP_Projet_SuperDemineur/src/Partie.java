@@ -16,7 +16,10 @@ public class Partie {
     private int nbColonnes;
     private int NbBombes;
 
-    
+    public GrilleDeJeu getGrille() {
+    return grille;
+}
+
 public void tourDeJeu(int nbLines, int nbColonne) {
     if (partieTerminee) {
         return;

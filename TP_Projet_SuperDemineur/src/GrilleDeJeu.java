@@ -39,7 +39,10 @@ public class GrilleDeJeu {
     public int getNbBombes() {
         return nbBombes;
     }
-    
+    public Cellule getCellule(int i, int j) {
+    return matriceCellules[i][j];
+}
+
     public void placerBombesAleatoirement(){
         int nbMaxBombes=nbBombes;           
         for (int a = 0; a < nbMaxBombes; a++) {
