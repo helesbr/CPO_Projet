@@ -22,24 +22,30 @@ public class Partie {
         return grille;
     }
 
-    public void tourDeJeu(int nbLines, int nbColonne) {
-        if (partieTerminee) {
-            return;
-        }
-        int nouvellesCasesRevelees = grille.revelerCellule(nbLines, nbColonne);
-        nbCellulesRevelees += nouvellesCasesRevelees;
-        boolean bombeCliquee = grille.getCellule(nbLines, nbColonne).isPresenceBombe();
-        verifierFinDePartie(bombeCliquee);
+    public void tourDeJeu(int ligne, int colonne) {
+    if (partieTerminee) {
+        return;
     }
+    boolean bombeCliquee = grille.getCellule(ligne, colonne).isPresenceBombe();
+    if (bombeCliquee) {
+        nbVies--;
+    }
+    int nouvellesCasesRevelees = grille.revelerCellule(ligne, colonne, nbVies, NbBombes);
 
-    public void initaliserPartie(int nbLines, int nbColonnes, int NbBombes) {
+    nbCellulesRevelees += nouvellesCasesRevelees;
+
+    verifierFinDePartie(bombeCliquee);
+}
+
+
+    public void initaliserPartie(int nbLines, int nbColonnes, int NbBombes, int nbVies) {
         this.nbLines = nbLines;
         this.nbColonnes = nbColonnes;
         this.NbBombes = NbBombes;
-        grille = new GrilleDeJeu(this.nbLines, this.nbColonnes, this.NbBombes);
+        this.nbVies = nbVies;
+        grille = new GrilleDeJeu(this.nbLines, this.nbColonnes, this.NbBombes, this.nbVies);
         grille.InitaliserGrille();
         grille.placerBombesAleatoirement();
-        nbVies = 1;
         partieTerminee = false;
     }
 
@@ -50,7 +56,7 @@ public class Partie {
     }
 
     public void verifierFinDePartie(boolean bombeCliquee) {
-        if (bombeCliquee) {
+        if (nbVies<=0) {
             partieTerminee = true;
             grille.revelerToutesLesCellules();
             System.out.println("Boom Défaite !");

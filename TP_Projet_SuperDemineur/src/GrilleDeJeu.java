@@ -13,8 +13,9 @@ public class GrilleDeJeu {
     private int nbLines;
     private int nbColonnes;
     private int nbBombes;
+    private int nbVies;
 
-    public GrilleDeJeu(int nbLines, int nbColonnes, int nbBombes) {
+    public GrilleDeJeu(int nbLines, int nbColonnes, int nbBombes, int nbVies) {
         this.nbLines = nbLines;
         this.nbColonnes = nbColonnes;
         this.nbBombes = nbBombes;
@@ -87,7 +88,7 @@ public class GrilleDeJeu {
         }
     }
 
-    public int revelerCellule(int nbLines, int nbColonnes) {
+    public int revelerCellule(int nbLines, int nbColonnes,int nbVies, int nbBombes) {
         if (nbLines < 0 || nbLines >= this.nbLines
                 || nbColonnes < 0 || nbColonnes >= this.nbColonnes) {
             return 0;
@@ -106,9 +107,9 @@ public class GrilleDeJeu {
             for (int i = nbLines - 1; i <= nbLines + 1; i++) {
                 for (int j = nbColonnes - 1; j <= nbColonnes + 1; j++) {
                     if (i == nbLines && j == nbColonnes) {
-                        continue; // éviter la cellule centrale
+                        continue; 
                     }
-                    compteur += revelerCellule(i, j);
+                    compteur += revelerCellule(i, j, nbVies, nbBombes);
                 }
             }
         }

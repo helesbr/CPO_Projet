@@ -18,6 +18,7 @@ public class Super_Demineur extends javax.swing.JFrame {
     private int colonnes;
     private int lignes;
     private int bombes;
+    private int nbVies;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Super_Demineur.class.getName());
 
     public int getColonnes() {
@@ -31,14 +32,15 @@ public class Super_Demineur extends javax.swing.JFrame {
     /**
      * Creates new form Super_Demineur
      */
-    public Super_Demineur(int colonnes, int lignes, int bombes) {
+    public Super_Demineur(int colonnes, int lignes, int bombes, int nbVies) {
         int nbTotalCases = colonnes * lignes;
         this.colonnes = colonnes;
         this.lignes = lignes;
         this.bombes = bombes;
+        this.nbVies = nbVies;
         Jeu = new Partie();
         initComponents();
-        Jeu.initaliserPartie(this.lignes, this.colonnes, this.bombes);
+        Jeu.initaliserPartie(this.lignes, this.colonnes, this.bombes, this.nbVies);
         Jeu.demarrerPartie();
         PanneauGrille.removeAll();
         PanneauGrille.setLayout(new java.awt.GridLayout(this.lignes, this.colonnes));
