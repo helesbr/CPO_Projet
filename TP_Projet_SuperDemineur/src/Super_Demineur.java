@@ -27,6 +27,7 @@ public class Super_Demineur extends javax.swing.JFrame {
         int NbBombes = 10;
         Jeu.initaliserPartie(nbLignes, nbColonnes, NbBombes);
         Jeu.demarrerPartie();
+        PanneauGrille.removeAll();
         PanneauGrille.setLayout(new java.awt.GridLayout(nbLignes, nbColonnes));
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
@@ -37,8 +38,14 @@ public class Super_Demineur extends javax.swing.JFrame {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        if (Jeu.isPartieTerminee()) {
+                        return;
+                    }
+                        
                         Jeu.tourDeJeu(x,y);
                         repaint();
+                        
+                                
                     }
                 };
                 bouton_cellule.addActionListener(ecouteurClick);
