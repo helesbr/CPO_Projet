@@ -30,32 +30,38 @@ public class Frame_Accueil extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lbl_nbColonnes = new javax.swing.JLabel();
+        lbl_nbLignes = new javax.swing.JLabel();
+        lbl_nbBombes = new javax.swing.JLabel();
+        lbl_nbVies = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         nb_colonnes = new javax.swing.JSpinner();
         nb_lignes = new javax.swing.JSpinner();
         nb_bombes = new javax.swing.JSpinner();
+        nb_vies = new javax.swing.JSpinner();
         btn_Entrer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new java.awt.GridLayout(3, 1, 0, 10));
+        jPanel1.setLayout(new java.awt.GridLayout(4, 1, 0, 10));
 
-        jLabel1.setText("Nombres de Colonnes");
-        jPanel1.add(jLabel1);
+        lbl_nbColonnes.setText("Nombres de Colonnes");
+        jPanel1.add(lbl_nbColonnes);
 
-        jLabel2.setText("Nombres de Lignes");
-        jPanel1.add(jLabel2);
+        lbl_nbLignes.setText("Nombres de Lignes");
+        jPanel1.add(lbl_nbLignes);
 
-        jLabel3.setText("Nombre de Bombes");
-        jPanel1.add(jLabel3);
+        lbl_nbBombes.setText("Nombre de Bombes");
+        jPanel1.add(lbl_nbBombes);
 
-        jPanel2.setLayout(new java.awt.GridLayout(3, 1, 0, 10));
+        lbl_nbVies.setText("Nombres de Vies");
+        jPanel1.add(lbl_nbVies);
+
+        jPanel2.setLayout(new java.awt.GridLayout(4, 1, 0, 10));
         jPanel2.add(nb_colonnes);
         jPanel2.add(nb_lignes);
         jPanel2.add(nb_bombes);
+        jPanel2.add(nb_vies);
 
         btn_Entrer.setText("Entrer");
         btn_Entrer.addActionListener(new java.awt.event.ActionListener() {
@@ -80,16 +86,16 @@ public class Frame_Accueil extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(197, Short.MAX_VALUE)
+                .addContainerGap(114, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(49, 49, 49))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(102, 102, 102))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btn_Entrer)
-                        .addGap(90, 90, 90))))
+                        .addGap(155, 155, 155))))
         );
 
         pack();
@@ -99,7 +105,8 @@ public class Frame_Accueil extends javax.swing.JFrame {
         int nbColonnes = (Integer) nb_colonnes.getValue();
         int nbLignes = (Integer) nb_lignes.getValue();
         int nbBombes = (Integer) nb_bombes.getValue();
-        if (nbLignes <= 0 || nbColonnes <= 0 || nbLignes <= 0) {
+        int nbVies = (Integer) nb_vies.getValue();
+        if (nbLignes <= 0 || nbColonnes <= 0 || nbLignes <= 0 || nbVies<=0) {
             JOptionPane.showConfirmDialog(
                     this,
                     "Veuillez choisir une valeur minimale de 1 ",
@@ -117,6 +124,15 @@ public class Frame_Accueil extends javax.swing.JFrame {
             );
             return;
         }
+            if (nbBombes == nbVies) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Il faut plus de bombes que de vie",
+                    "Erreur",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
         if (nbBombes > nbLignes * nbColonnes) {
             JOptionPane.showMessageDialog(
                     this,
@@ -126,7 +142,7 @@ public class Frame_Accueil extends javax.swing.JFrame {
             );
             return;
         }
-        Super_Demineur jeu = new Super_Demineur(nbColonnes, nbLignes, nbBombes);
+        Super_Demineur jeu = new Super_Demineur(nbColonnes, nbLignes, nbBombes, nbVies);
         jeu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_EntrerActionPerformed
@@ -158,13 +174,15 @@ public class Frame_Accueil extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Entrer;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lbl_nbBombes;
+    private javax.swing.JLabel lbl_nbColonnes;
+    private javax.swing.JLabel lbl_nbLignes;
+    private javax.swing.JLabel lbl_nbVies;
     private javax.swing.JSpinner nb_bombes;
     private javax.swing.JSpinner nb_colonnes;
     private javax.swing.JSpinner nb_lignes;
+    private javax.swing.JSpinner nb_vies;
     // End of variables declaration//GEN-END:variables
 }

@@ -37,18 +37,18 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="197" max="32767" attributes="0"/>
+              <EmptySpace pref="114" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel2" min="-2" pref="103" max="-2" attributes="0"/>
-                          <Component id="jPanel1" min="-2" pref="99" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jPanel2" pref="133" max="32767" attributes="0"/>
+                          <Component id="jPanel1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="btn_Entrer" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -60,23 +60,28 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
         <Property name="columns" type="int" value="1"/>
-        <Property name="rows" type="int" value="3"/>
+        <Property name="rows" type="int" value="4"/>
         <Property name="verticalGap" type="int" value="10"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="lbl_nbColonnes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nombres de Colonnes"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="lbl_nbLignes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nombres de Lignes"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="lbl_nbBombes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nombre de Bombes"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_nbVies">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nombres de Vies"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -85,7 +90,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
         <Property name="columns" type="int" value="1"/>
-        <Property name="rows" type="int" value="3"/>
+        <Property name="rows" type="int" value="4"/>
         <Property name="verticalGap" type="int" value="10"/>
       </Layout>
       <SubComponents>
@@ -94,6 +99,8 @@
         <Component class="javax.swing.JSpinner" name="nb_lignes">
         </Component>
         <Component class="javax.swing.JSpinner" name="nb_bombes">
+        </Component>
+        <Component class="javax.swing.JSpinner" name="nb_vies">
         </Component>
       </SubComponents>
     </Container>
