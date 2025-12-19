@@ -59,6 +59,7 @@ public class Partie {
         if (grille.toutesCellulesRevelees() == true) {
             partieTerminee = true;
             victoire = true;
+            grille.revelerToutesLesCellules();
         }
     }
 

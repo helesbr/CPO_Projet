@@ -5,7 +5,6 @@ import javax.swing.JOptionPane;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author helia
@@ -105,6 +104,15 @@ public class Frame_Accueil extends javax.swing.JFrame {
                     this,
                     "Veuillez choisir une valeur minimale de 1 ",
                     "Erreur de configuration",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+        if (nbBombes <= 0) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Il faut au moins 1 bombe",
+                    "Erreur",
                     JOptionPane.ERROR_MESSAGE
             );
             return;

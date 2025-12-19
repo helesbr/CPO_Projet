@@ -51,28 +51,23 @@ public class Super_Demineur extends javax.swing.JFrame {
                 ActionListener ecouteurClick = new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        // NE RIEN FAIRE si la partie est terminée
+                        
                         if (Jeu.isPartieTerminee()) {
                             return;
                         }
-
-                        // Jouer le tour
                         Jeu.tourDeJeu(x, y);
 
-                        // Actualiser tous les boutons
                         for (java.awt.Component c : PanneauGrille.getComponents()) {
                             if (c instanceof CelluleGraphique) {
                                 ((CelluleGraphique) c).actualiser();
                             }
                         }
 
-                        // Si la partie est terminée
                         if (Jeu.isPartieTerminee()) {
                             for (java.awt.Component c : PanneauGrille.getComponents()) {
                                 c.setEnabled(false);
                             }
 
-                            // Affichage fenêtre victoire ou défaite
                             if (Jeu.isVictoire()) {
                                 Frame_Victoire victoire = new Frame_Victoire();
                                 victoire.setVisible(true);
