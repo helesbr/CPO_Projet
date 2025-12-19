@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author helia
  */
 public class Frame_Accueil extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Frame_Accueil.class.getName());
 
     /**
@@ -100,27 +100,27 @@ public class Frame_Accueil extends javax.swing.JFrame {
         int nbColonnes = (Integer) nb_colonnes.getValue();
         int nbLignes = (Integer) nb_lignes.getValue();
         int nbBombes = (Integer) nb_bombes.getValue();
-        if (nbLignes <= 0 || nbColonnes <=0 || nbLignes <=0){
+        if (nbLignes <= 0 || nbColonnes <= 0 || nbLignes <= 0) {
             JOptionPane.showConfirmDialog(
-            this,
+                    this,
                     "Veuillez choisir une valeur minimale de 1 ",
-                "Erreur de configuration",
-                JOptionPane.ERROR_MESSAGE
-                            );
-                    return;
+                    "Erreur de configuration",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return;
         }
-        if(nbBombes > nbLignes*nbColonnes){
+        if (nbBombes > nbLignes * nbColonnes) {
             JOptionPane.showMessageDialog(
-            this, 
+                    this,
                     "Vous avez choisis plus de bombes que de cases",
                     "Erreur de configuration",
                     JOptionPane.ERROR_MESSAGE
             );
             return;
         }
-         Super_Demineur jeu = new Super_Demineur(nbColonnes, nbLignes, nbBombes);
-    jeu.setVisible(true);
-    this.dispose();
+        Super_Demineur jeu = new Super_Demineur(nbColonnes, nbLignes, nbBombes);
+        jeu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_EntrerActionPerformed
 
     /**

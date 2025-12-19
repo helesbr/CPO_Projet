@@ -8,16 +8,17 @@
  * @author helia
  */
 public class Frame_Defaite extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Frame_Defaite.class.getName());
     private int nbCasesRevelees;
     int nbTotalCases;
+
     public Frame_Defaite(int nbCasesRevelees, int nbTotalCases) {
         this.nbCasesRevelees = nbCasesRevelees;
         this.nbTotalCases = nbTotalCases;
         initComponents();
         texte_stats.setText("Vous avez révélé " + nbCasesRevelees + " case(s) sur " + nbTotalCases + " !");
-}
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

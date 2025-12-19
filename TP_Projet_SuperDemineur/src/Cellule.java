@@ -8,49 +8,47 @@
  * @author helia
  */
 public class Cellule {
-   private boolean presenceBombe;
-   private boolean devoilee;
+
+    private boolean presenceBombe;
+    private boolean devoilee;
     private int nbBombesAdjacentes;
 
     public boolean isPresenceBombe() {
         return presenceBombe;
     }
 
-public void setNbBombesAdjacentes(int nbBombesAdjacentes) {
+    public void setNbBombesAdjacentes(int nbBombesAdjacentes) {
         this.nbBombesAdjacentes = nbBombesAdjacentes;
     }
 
     public int getNbBombesAdjacentes() {
         return nbBombesAdjacentes;
     }
-    
-   public void placerBombe(){
-        if (!presenceBombe){
-        presenceBombe=true;
+
+    public void placerBombe() {
+        if (!presenceBombe) {
+            presenceBombe = true;
+        }
     }
+
+    public void revelerCellule() {
+        devoilee = true;
     }
-     
-    public void revelerCellule(){
-        devoilee=true;
-    }
+
     public boolean estDevoilee() {
-    return devoilee;
-}
+        return devoilee;
+    }
 
-@Override
-public String toString() {
-    if (!devoilee) {
-        return "?";
-    } else if (presenceBombe) {
-        return "B";
-    } else if (getNbBombesAdjacentes() > 0) {
-        return String.valueOf(getNbBombesAdjacentes());
-    } else {
-        return " ";
+    @Override
+    public String toString() {
+        if (!devoilee) {
+            return "?";
+        } else if (presenceBombe) {
+            return "B";
+        } else if (getNbBombesAdjacentes() > 0) {
+            return String.valueOf(getNbBombesAdjacentes());
+        } else {
+            return " ";
+        }
     }
 }
-}
-    
-    
-    
-

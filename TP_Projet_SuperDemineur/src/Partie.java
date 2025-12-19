@@ -7,8 +7,8 @@
  *
  * @author helia
  */
-
 public class Partie {
+
     private GrilleDeJeu grille;
     private boolean partieTerminee;
     private boolean victoire;
@@ -16,57 +16,61 @@ public class Partie {
     private int nbLines;
     private int nbColonnes;
     private int NbBombes;
-    private int nbCellulesRevelees =0;
+    private int nbCellulesRevelees = 0;
 
     public GrilleDeJeu getGrille() {
-    return grille;
-}
+        return grille;
+    }
 
-public void tourDeJeu(int nbLines, int nbColonne) {
-    if (partieTerminee) {
-        return;
-    }  
-    int nouvellesCasesRevelees = grille.revelerCellule(nbLines, nbColonne);
-    nbCellulesRevelees += nouvellesCasesRevelees;
-    boolean bombeCliquee = grille.getCellule(nbLines, nbColonne).isPresenceBombe();
-    verifierFinDePartie(bombeCliquee);
-}
-    
-    public void initaliserPartie(int nbLines, int nbColonnes, int NbBombes){
+    public void tourDeJeu(int nbLines, int nbColonne) {
+        if (partieTerminee) {
+            return;
+        }
+        int nouvellesCasesRevelees = grille.revelerCellule(nbLines, nbColonne);
+        nbCellulesRevelees += nouvellesCasesRevelees;
+        boolean bombeCliquee = grille.getCellule(nbLines, nbColonne).isPresenceBombe();
+        verifierFinDePartie(bombeCliquee);
+    }
+
+    public void initaliserPartie(int nbLines, int nbColonnes, int NbBombes) {
         this.nbLines = nbLines;
         this.nbColonnes = nbColonnes;
         this.NbBombes = NbBombes;
         grille = new GrilleDeJeu(this.nbLines, this.nbColonnes, this.NbBombes);
         grille.InitaliserGrille();
         grille.placerBombesAleatoirement();
-        nbVies = 1;               
+        nbVies = 1;
         partieTerminee = false;
     }
+
     public void demarrerPartie() {
-    partieTerminee = false;
-    grille.calculerBombesAdjacentes();
-    System.out.println("La partie commence !");
-}
-    
- public void verifierFinDePartie(boolean bombeCliquee){
-     if (bombeCliquee) {
-        partieTerminee = true;
-        grille.revelerToutesLesCellules();
-        System.out.println("Boom Défaite !");
-        return;
+        partieTerminee = false;
+        grille.calculerBombesAdjacentes();
+        System.out.println("La partie commence !");
     }
-     if (grille.toutesCellulesRevelees()==true){
-         partieTerminee = true;
-         victoire = true;
-     }
- }   
- public boolean isPartieTerminee() {
-    return partieTerminee;
-}
+
+    public void verifierFinDePartie(boolean bombeCliquee) {
+        if (bombeCliquee) {
+            partieTerminee = true;
+            grille.revelerToutesLesCellules();
+            System.out.println("Boom Défaite !");
+            return;
+        }
+        if (grille.toutesCellulesRevelees() == true) {
+            partieTerminee = true;
+            victoire = true;
+        }
+    }
+
+    public boolean isPartieTerminee() {
+        return partieTerminee;
+    }
 
     public int getNbCellulesRevelees() {
         return nbCellulesRevelees;
     }
- 
- 
+
+    public boolean isVictoire() {
+        return victoire;
+    }
 }

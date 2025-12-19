@@ -32,12 +32,12 @@ public class Super_Demineur extends javax.swing.JFrame {
      * Creates new form Super_Demineur
      */
     public Super_Demineur(int colonnes, int lignes, int bombes) {
-        int nbTotalCases = colonnes* lignes;
-         this.colonnes = colonnes;
+        int nbTotalCases = colonnes * lignes;
+        this.colonnes = colonnes;
         this.lignes = lignes;
         this.bombes = bombes;
         Jeu = new Partie();
-        initComponents();       
+        initComponents();
         Jeu.initaliserPartie(this.lignes, this.colonnes, this.bombes);
         Jeu.demarrerPartie();
         PanneauGrille.removeAll();
@@ -47,35 +47,51 @@ public class Super_Demineur extends javax.swing.JFrame {
                 final int x = i;
                 final int y = j;
                 CelluleGraphique bouton_cellule = new CelluleGraphique(Jeu.getGrille().getCellule(i, j), 36, 36);
-                ActionListener ecouteurClick = new ActionListener() {
 
+                ActionListener ecouteurClick = new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        // NE RIEN FAIRE si la partie est terminée
                         if (Jeu.isPartieTerminee()) {
-                        return;
-                    }
-                        ((CelluleGraphique) e.getSource()).setEnabled(false);
-                        Jeu.tourDeJeu(x,y);
-                        repaint();
+                            return;
+                        }
+
+                        // Jouer le tour
+                        Jeu.tourDeJeu(x, y);
+
+                        // Actualiser tous les boutons
+                        for (java.awt.Component c : PanneauGrille.getComponents()) {
+                            if (c instanceof CelluleGraphique) {
+                                ((CelluleGraphique) c).actualiser();
+                            }
+                        }
+
+                        // Si la partie est terminée
                         if (Jeu.isPartieTerminee()) {
-                    for (java.awt.Component c : PanneauGrille.getComponents()) {
-                        c.setEnabled(false);
-                    }
-                    PanneauGrille.repaint();
-                    PanneauGrille.revalidate();
-                    int nbCasesRevelees = Jeu.getNbCellulesRevelees();
-                    int nbTotalCases = Jeu.getGrille().getNbLines() * Jeu.getGrille().getNbColonnes();
-                    Frame_Defaite defaite = new Frame_Defaite(nbCasesRevelees, nbTotalCases);
-                    defaite.setVisible(true);
-                        }            
+                            for (java.awt.Component c : PanneauGrille.getComponents()) {
+                                c.setEnabled(false);
+                            }
+
+                            // Affichage fenêtre victoire ou défaite
+                            if (Jeu.isVictoire()) {
+                                Frame_Victoire victoire = new Frame_Victoire();
+                                victoire.setVisible(true);
+                            } else {
+                                int nbCasesRevelees = Jeu.getNbCellulesRevelees();
+                                int nbTotalCases = Jeu.getGrille().getNbLines() * Jeu.getGrille().getNbColonnes();
+                                Frame_Defaite defaite = new Frame_Defaite(nbCasesRevelees, nbTotalCases);
+                                defaite.setVisible(true);
+                            }
+                        }
                     }
                 };
+
                 bouton_cellule.addActionListener(ecouteurClick);
                 PanneauGrille.add(bouton_cellule);
+
             }
+
         }
-        
-        
     }
 
     /**
